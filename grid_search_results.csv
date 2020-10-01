@@ -1,0 +1,65 @@
+,model,optimizer,epochs,batch_size,lr,RSME
+0,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,2048,0.001,tensor(0.8996)
+1,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,2048,0.001,tensor(0.9009)
+2,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,2048,0.001,tensor(0.9048)
+3,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,2048,0.001,tensor(0.9086)
+4,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,10,2048,0.001,tensor(0.9270)
+5,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,10,2048,0.001,tensor(0.9302)
+6,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,10,2048,0.001,tensor(0.9373)
+7,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,20,2048,0.001,tensor(0.9485)
+8,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,10,2048,0.001,tensor(0.9575)
+9,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,20,2048,0.001,tensor(1.0075)
+10,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,20,2048,0.001,tensor(1.0159)
+11,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,20,2048,0.001,tensor(1.0171)
+12,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,20,2048,0.001,tensor(1.0490)
+13,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,20,2048,0.001,tensor(1.0937)
+14,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,20,2048,0.001,tensor(1.1037)
+15,"LSTM(
+  (lstm): LSTM(32, 48, num_layers=4, dropout=0.1)
+  (linear): Linear(in_features=48, out_features=1, bias=True)
+)",<class 'torch.optim.rmsprop.RMSprop'>,20,2048,0.001,tensor(1.1298)
