@@ -50,11 +50,12 @@ class LSTM(nn.Module):
         return predictions
 
 
-def train(epochs, training_set, data_loader, batch_size, model, loss_fn,
-          optimizer, device, lr):
+def train(epochs, training_set, batch_size, model, loss_fn, optimizer, device,
+          lr):
+    data_loader = torch.utils.data.DataLoader(training_set, batch_size,
+                                              shuffle=False, num_workers=0)
     model.train()
     num_batches = len(data_loader)
-    last_batch_size = len(training_set) % batch_size
     losses = np.array([])
     for i in range(epochs):
         bar_format = \
@@ -65,7 +66,7 @@ def train(epochs, training_set, data_loader, batch_size, model, loss_fn,
                                   total=num_batches, bar_format=bar_format):
             seq = current_batch[:, :-1].reshape(-1, 1, model.input_size)
             label = current_batch[:, -1:].reshape(-1, 1, 1)
-                
+            
             optimizer.zero_grad()
             model.hidden_cell = (
                 torch.zeros(
@@ -77,13 +78,6 @@ def train(epochs, training_set, data_loader, batch_size, model, loss_fn,
             loss = loss_fn(y_pred, label)
             loss.backward()
             optimizer.step()
-        """
-            curr_bsize = len(label)
-            loss_item = loss.item()
-            running_loss += loss_item / curr_bsize
-
-        losses = np.append(losses, running_loss)
-        """
     
     return losses
 
@@ -141,7 +135,10 @@ def plot_12(results, res_num):
 
 
 def grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
-                test_val_set, y_val):
+                test_val_set, lrs, y_val):
+    num_models = \
+        len(epoch_list) * len(models) * len(lrs) * len(optimizers) * len(batch_sizes)
+    i = 1
     train_losses = []
     val_info = []
     for epochs in epoch_list:
@@ -153,6 +150,11 @@ def grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
                 for optim in optimizers:
                     optimizer = optim(model.parameters(), lr=lr)
                     for batch_size in batch_sizes:
+                        print('\nGrid search : {} out of {}\n'.format(
+                            i, num_models))
+                        
+                        i += 1
+                        
                         data_loader = \
                             torch.utils.data.DataLoader(train_val_set,
                                                         batch_size,
@@ -174,11 +176,9 @@ def grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
 
 
 if __name__ == '__main__':
-    torch.backends.cudnn.enabled = False
-    torch.backends.cudnn.benchmark = False
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    sales_train = pd.read_csv('sales_train.csv')
+    
+    sales_train = pd.read_csv('data/sales_train.csv')
     sales_train['date'] = pd.to_datetime(sales_train['date'],
                                          format='%d.%m.%Y')
     sales_train.drop('item_price', axis=1, inplace=True)
@@ -197,7 +197,7 @@ if __name__ == '__main__':
                                           columns=['date_block_num'],
                                           fill_value=0, aggfunc='sum')
     
-    test = pd.read_csv('test.csv', index_col='ID')
+    test = pd.read_csv('data/test.csv', index_col='ID')
     
     # Take the shop/item combinations from the test set
     dataset = pd.merge(test, sales_train, on=['item_id', 'shop_id'],
@@ -206,13 +206,23 @@ if __name__ == '__main__':
     dataset.drop(['shop_id', 'item_id'], axis=1, inplace=True)
     dataset = dataset.clip(0, 20)
     
+    loss_fn = RMSELoss
+    
+    # Grid search
+    """
+    Otherwise I had a CUDA Error : Unspecified launch failure which may be
+    driver related (increases training time by a factor of 5-6 on my machine
+    but doesn't increase testing time).
+
+    torch.backends.cudnn.enabled = False
+    torch.backends.cudnn.benchmark = False
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     train_val_set = torch.from_numpy(dataset.values[:, :-1]).float().to(device)
     test_val_set = torch.from_numpy(dataset.values[:, 1:-1]).float().to(device)
     y_val = torch.from_numpy(dataset.values[:, -1]).float().to(device)
     
-    loss_fn = RMSELoss
     
-    # Grid search
+    
     val = True
     
     epoch_list = [5, 10]
@@ -234,30 +244,31 @@ if __name__ == '__main__':
     
     train_losses, val_info = \
         grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
-                test_val_set, y_val)
+                    test_val_set, lrs, y_val)
     
     val_info.sort(key=lambda tup: tup[5])
     
     df = pd.DataFrame(data=val_info)
     df.columns = ['model', 'optimizer', 'epochs', 'batch_size', 'lr', 'RSME']
     df.to_csv('grid_search_results.csv', mode='a')
-    
     """
+    torch.backends.cudnn.enabled = True
+    torch.backends.cudnn.benchmark = False
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     training_set = torch.from_numpy(dataset.values).float().to(device)
     # for test we keep all the columns except the first one
     X_test = torch.from_numpy(dataset.values[:, 1:]).float().to(device)
     
-    model = LSTM(device, hidden_layer=192, num_layers=3, dropout=0.2)
-    epochs = 10
-    optim = torch.optim.Adam
-    batch_size = 4096
+    model = LSTM(device, hidden_layer=192, num_layers=3, dropout=0.1).to(
+        device)
+    epochs = 5
+    optimizer = torch.optim.Adam
+    batch_size = 1024
     lr = 1e-3
+    optim = optimizer(model.parameters(), lr=lr)
     
-    data_loader = torch.utils.data.DataLoader(X_test, batch_size,
-                                              shuffle=False, num_workers=0)
-    
-    train(epochs, training_set, data_loader, batch_size, model, loss_fn,
-          optim, device, lr)
+    train(epochs, training_set, batch_size, model, loss_fn, optim, device,
+          lr)
     
     eval_res = evaluate(epochs, batch_size, model, loss_fn, optim, X_test,
                         device, lr)
@@ -266,6 +277,5 @@ if __name__ == '__main__':
     
     df = pd.DataFrame(data={'ID': test.index, 'item_cnt_month': preds})
 
-    df.to_csv('sub.csv', index=False)
+    df.to_csv('submissions/sub_gs2.csv', index=False)
     
-    """

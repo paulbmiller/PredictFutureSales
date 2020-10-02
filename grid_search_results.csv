@@ -63,3 +63,388 @@
   (lstm): LSTM(32, 48, num_layers=4, dropout=0.1)
   (linear): Linear(in_features=48, out_features=1, bias=True)
 )",<class 'torch.optim.rmsprop.RMSprop'>,20,2048,0.001,tensor(1.1298)
+,model,optimizer,epochs,batch_size,lr,RSME
+0,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.8807443976402283
+1,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.8830608129501343
+2,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.884731650352478
+3,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8851131200790405
+4,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.8856891989707947
+5,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.8861304521560669
+6,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8885725140571594
+7,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8901227712631226
+8,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.89100182056427
+9,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8917019367218018
+10,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.8919916152954102
+11,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.8935824632644653
+12,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.8952550292015076
+13,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.896018385887146
+14,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.8972155451774597
+15,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.8981423377990723
+16,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.8987350463867188
+17,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8989627361297607
+18,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.8990262150764465
+19,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.001,0.9005125164985657
+20,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9005481600761414
+21,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.9016878604888916
+22,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.9037952423095703
+23,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.001,0.9054847955703735
+24,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9064723253250122
+25,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9082335233688354
+26,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.9087308645248413
+27,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9092661738395691
+28,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.9108283519744873
+29,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9121416211128235
+30,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9129512310028076
+31,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9134010076522827
+32,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9135489463806152
+33,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9145030975341797
+34,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9152851700782776
+35,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9153686165809631
+36,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9158707857131958
+37,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9159069061279297
+38,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9160436987876892
+39,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9162265062332153
+40,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.916230320930481
+41,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9164459705352783
+42,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9181551933288574
+43,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.001,0.9189131855964661
+44,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.9201231002807617
+45,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9219576716423035
+46,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.922690749168396
+47,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9230222105979919
+48,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9231353402137756
+49,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9241907596588135
+50,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9245461225509644
+51,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9246454238891602
+52,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9251903295516968
+53,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.9254298210144043
+54,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9274897575378418
+55,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.928455650806427
+56,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9304075837135315
+57,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9308205246925354
+58,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0005,0.9310647249221802
+59,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9311631321907043
+60,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9313130974769592
+61,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.931372880935669
+62,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9316220283508301
+63,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9324019551277161
+64,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9332636594772339
+65,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.933445155620575
+66,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.9336754083633423
+67,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9340404868125916
+68,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9348171353340149
+69,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9364798665046692
+70,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.937046229839325
+71,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9373595118522644
+72,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9374930262565613
+73,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9377826452255249
+74,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9379670023918152
+75,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.9380297064781189
+76,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9386777877807617
+77,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9389656186103821
+78,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.1)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9395169615745544
+79,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.9405656456947327
+80,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9420403838157654
+81,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5, dropout=0.1)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9426017999649048
+82,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9432929754257202
+83,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0001,0.944460928440094
+84,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.001,0.944732129573822
+85,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9456328749656677
+86,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0005,0.948897123336792
+87,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3, dropout=0.2)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9506168365478516
+88,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.9521190524101257
+89,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,1024,0.0001,0.9532180428504944
+90,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,5,4096,0.0005,0.956750214099884
+91,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9603086709976196
+92,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=4, dropout=0.2)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0005,0.9650112986564636
+93,"LSTM(
+  (lstm): LSTM(32, 96, num_layers=5)
+  (linear): Linear(in_features=96, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9650363922119141
+94,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,1024,0.0001,0.9690255522727966
+95,"LSTM(
+  (lstm): LSTM(32, 192, num_layers=3)
+  (linear): Linear(in_features=192, out_features=1, bias=True)
+)",<class 'torch.optim.adam.Adam'>,10,4096,0.0001,0.9842933416366577
