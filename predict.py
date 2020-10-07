@@ -51,7 +51,12 @@ class LSTM(nn.Module):
 
 
 def train(epochs, training_set, batch_size, model, loss_fn, optimizer, device,
-          lr):
+          lr, max_epochs=None, curr_epoch=None):
+    if curr_epoch is None:
+        curr_epoch = 0
+    if max_epochs is None:
+        max_epochs = epochs
+    
     data_loader = torch.utils.data.DataLoader(training_set, batch_size,
                                               shuffle=False, num_workers=0)
     model.train()
@@ -60,7 +65,7 @@ def train(epochs, training_set, batch_size, model, loss_fn, optimizer, device,
     for i in range(epochs):
         bar_format = \
             'Training ep. {}/{} : '.format(
-                i + 1, epochs) + '{l_bar}{bar}{r_bar}'
+                curr_epoch + i + 1, max_epochs) + '{l_bar}{bar}{r_bar}'
         running_loss = 0.0
         for current_batch in tqdm(data_loader, unit='batches',
                                   total=num_batches, bar_format=bar_format):
@@ -136,36 +141,40 @@ def plot_12(results, res_num):
 
 def grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
                 test_val_set, lrs, y_val):
-    num_models = \
-        len(epoch_list) * len(models) * len(lrs) * len(optimizers) * len(batch_sizes)
+    num_models = len(models) * len(lrs) * len(optimizers) * len(batch_sizes)
     i = 1
     train_losses = []
     val_info = []
-    for epochs in epoch_list:
-        for mod in models:
-            model = mod.to(device)
-            for _, module in model.named_children():
-                module.reset_parameters()
-            for lr in lrs:
-                for optim in optimizers:
-                    optimizer = optim(model.parameters(), lr=lr)
-                    for batch_size in batch_sizes:
-                        print('\nGrid search : {} out of {}\n'.format(
-                            i, num_models))
+    epoch_list.sort()
+    max_epochs = epoch_list[-1]
+    for mod in models:
+        model = mod.to(device)
+        
+        for lr in lrs:
+            for optim in optimizers:
+                optimizer = optim(model.parameters(), lr=lr)
+                for batch_size in batch_sizes:
+                    # tqdm.write('\nGrid search : {} out of {}\n'.format(
+                    #     i, num_models))
+                    for _, module in model.named_children():
+                        module.reset_parameters()
                         
-                        i += 1
+                    i += 1
+                    
+                    epochs_trained = 0
                         
-                        data_loader = \
-                            torch.utils.data.DataLoader(train_val_set,
-                                                        batch_size,
-                                                        shuffle=False,
-                                                        num_workers=0)
-                        # For Grid search
+                    data_loader = torch.utils.data.DataLoader(train_val_set,
+                                                              batch_size,
+                                                              shuffle=False,
+                                                              num_workers=0)
+                    
+                    for epochs in epoch_list:
                         train_losses.append(
-                            train(epochs, train_val_set, data_loader,
+                            train(epochs - epochs_trained, train_val_set,
                                   batch_size, model, loss_fn, optimizer,
-                                  device, lr))
-                        
+                                  device, lr, max_epochs, epochs_trained))
+
+                        epochs_trained += epochs - epochs_trained
     
                         val_info.append(
                             evaluate(epochs, batch_size, model, loss_fn,
@@ -213,34 +222,26 @@ if __name__ == '__main__':
     Otherwise I had a CUDA Error : Unspecified launch failure which may be
     driver related (increases training time by a factor of 5-6 on my machine
     but doesn't increase testing time).
+    """
 
-    torch.backends.cudnn.enabled = False
-    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.enabled = True
+    torch.backends.cudnn.benchmark = True
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     train_val_set = torch.from_numpy(dataset.values[:, :-1]).float().to(device)
     test_val_set = torch.from_numpy(dataset.values[:, 1:-1]).float().to(device)
     y_val = torch.from_numpy(dataset.values[:, -1]).float().to(device)
-    
-    
-    
+    """
     val = True
     
-    epoch_list = [5, 10]
+    epoch_list = [5]
     models = [
-        LSTM(device, hidden_layer=192, num_layers=3, dropout=0.2, val=val),
-        LSTM(device, hidden_layer=192, num_layers=3, dropout=0.1, val=val),
-        LSTM(device, hidden_layer=192, num_layers=3, dropout=0.0, val=val),
-        LSTM(device, hidden_layer=96, num_layers=4, dropout=0.0, val=val),
-        LSTM(device, hidden_layer=96, num_layers=5, dropout=0.0, val=val),
-        LSTM(device, hidden_layer=96, num_layers=5, dropout=0.1, val=val),
-        LSTM(device, hidden_layer=96, num_layers=5, dropout=0.2, val=val),
-        LSTM(device, hidden_layer=96, num_layers=4, dropout=0.2, val=val)]
+        LSTM(device, hidden_layer=192, num_layers=3, dropout=0.0, val=val)]
     
     optimizers = [torch.optim.Adam]
     
-    batch_sizes = [1024, 4096]
+    batch_sizes = [256, 512, 1024]
     
-    lrs = [1e-3, 5e-4, 1e-4]
+    lrs = [1.5e-3, 2e-3, 2.5e-3, 3e-3]
     
     train_losses, val_info = \
         grid_search(models, epoch_list, optimizers, batch_sizes, train_val_set,
@@ -253,18 +254,18 @@ if __name__ == '__main__':
     df.to_csv('grid_search_results.csv', mode='a')
     """
     torch.backends.cudnn.enabled = True
-    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.benchmark = True
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     training_set = torch.from_numpy(dataset.values).float().to(device)
     # for test we keep all the columns except the first one
     X_test = torch.from_numpy(dataset.values[:, 1:]).float().to(device)
     
-    model = LSTM(device, hidden_layer=192, num_layers=3, dropout=0.1).to(
+    model = LSTM(device, hidden_layer=192, num_layers=3).to(
         device)
     epochs = 5
     optimizer = torch.optim.Adam
     batch_size = 1024
-    lr = 1e-3
+    lr = 1.5e-3
     optim = optimizer(model.parameters(), lr=lr)
     
     train(epochs, training_set, batch_size, model, loss_fn, optim, device,
@@ -277,5 +278,6 @@ if __name__ == '__main__':
     
     df = pd.DataFrame(data={'ID': test.index, 'item_cnt_month': preds})
 
-    df.to_csv('submissions/sub_gs2.csv', index=False)
+    df.to_csv('submissions/sub_gs3.csv', index=False)
+    
     
